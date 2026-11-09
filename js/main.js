@@ -52,6 +52,7 @@
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { form.email.classList.add('invalid'); ok = false; }
       if (!message) { form.message.classList.add('invalid'); ok = false; }
       if (!ok) { status.textContent = 'Please complete all fields with a valid email.'; return; }
+      if (document.documentElement.hasAttribute('data-draft')) { status.textContent = 'Preview only: this form is not active.'; return; }
       var subject = 'Website enquiry from ' + name;
       var body = message + '\n\n' + name + '\n' + email;
       status.textContent = 'Opening your email app to send the enquiry…';
